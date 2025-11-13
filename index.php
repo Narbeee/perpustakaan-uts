@@ -1,7 +1,11 @@
 <?php
-define('MY_APP', true);
+session_start();
 
-// Get hal
+if(!isset($_SESSION['admin_logged_in']))  {
+    header("location: login.php");
+    exit;
+}
+define('MY_APP', true);
 $page = isset($_GET['hal']) ? $_GET['hal'] : 'dashboard';
 // title untuk di header
 $title = ucwords(str_replace('-', ' ', $page));
